@@ -48,6 +48,7 @@ public class MigrationsPluginMojo extends AbstractMojo {
             migrationsDirectory.mkdirs();
         }
 
+        name = name.replaceAll("\\s","_").toLowerCase();
         String timeStamp = DateTime.now().toString(VERSION_PATTERN);
         String migrationName = MessageFormat.format(FLYWAY_DB_MIGRATION_PATTERN, timeStamp, name);
         getLog().info("Creating new migration: " + migrationName);
